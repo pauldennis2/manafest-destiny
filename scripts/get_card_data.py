@@ -1,8 +1,14 @@
+"""
+Responsible for getting the card data from the API and saving it to a file.
+
+Cleaning included free of charge.
+"""
+
 import requests
 import os
 import pandas as pd
 
-set_card_data_dfmap = {} # Map to orgnaize card data by set code
+card_dfmap = {} # Map to orgnaize card data by set code
 
 SET_CODES = {'blb': 'Bloomburrow', 'dsk': 'Duskmourn'} # Simply for pretty printing; not required
 def get_card_data(set_code: str) -> pd.DataFrame:
@@ -16,8 +22,8 @@ def get_card_data(set_code: str) -> pd.DataFrame:
     e.g Bloomburrow = "blb"
     """
     # 1. Check if the card data is already in the map
-    if set_card_data_dfmap[set_code]:
-        return set_card_data_dfmap[set_code]
+    if card_dfmap[set_code]:
+        return card_dfmap[set_code]
     
 
     set_name = set_code # If available, use the set name for pretty printing
@@ -29,7 +35,7 @@ def get_card_data(set_code: str) -> pd.DataFrame:
     if os.path.exists(file_path):
         print(f"Loading Scryfall data for {set_name} from existing file...")
         df = pd.read_csv(file_path)
-        set_card_data_dfmap[set_code] = df
+        card_dfmap[set_code] = df
         return df
     
     # 3. If neither, fetch the data from Scryfall API
@@ -50,7 +56,7 @@ def get_card_data(set_code: str) -> pd.DataFrame:
     # Convert full dataset to DataFrame and save
     df = pd.DataFrame(all_data)
     df.to_csv(file_path, index=False)
-    set_card_data_dfmap[set_code] = df
+    card_dfmap[set_code] = df
     return df
 
 # Not sure what I want  to do with this yet

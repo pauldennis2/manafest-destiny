@@ -146,19 +146,3 @@ def generate_deck_data(draft_df: pd.DataFrame, card_df: pd.DataFrame, output_fil
     deck_df.to_csv(output_file, index=False)
     print(f"Deck DataFrame created: {deck_df.shape[0]} rows, {deck_df.shape[1]} columns (Processed up to {max_decks} decks)")
 
-def leopard():
-    csv_file = f"data/{set_code}/games.csv"
-    df = pd.read_csv(csv_file)
-
-    # Save as Parquet (PyArrow format)
-    parquet_file = "data/bloomburrow/games.parquet"
-    df.to_parquet(parquet_file, engine="pyarrow", compression="snappy")  # Snappy is fast & efficient
-
-    print(f"Converted {csv_file} to {parquet_file}.")
-
-    # Load the Parquet file we just created
-    parquet_filestr = "data/bloomburrow/games.parquet"
-
-    if "games_df" not in globals():
-        games_df = pd.read_parquet(parquet_filestr, engine="pyarrow")
-    cards_df = pd.read_csv("data/bloomburrow/cards.csv")
