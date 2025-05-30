@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+/data/
+.vscode/
+.idea/
+*.log
+
+# Environment and dependency files
+env/            # Virtual environment directory (avoid pushing dependencies)
+venv/           # Another common Python virtual environment name
+*.egg-info/     # Python package metadata
+pip-log.txt     # Pip logs from package installs
+
+# Jupyter Notebook cache & checkpoints
+.ipynb_checkpoints/  # Prevent tracking temporary Jupyter checkpoints

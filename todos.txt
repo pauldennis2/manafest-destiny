@@ -1,0 +1,7 @@
+Drop more columns from data set
+
+Parquet or feather as a more efficient format
+
+Integrate sparkfall/mtga card data
+
+Idea of using draw rates as a deconfounding factor for luck - pipeline step
