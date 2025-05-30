@@ -21,17 +21,16 @@ def get_card_data(set_code: str) -> pd.DataFrame:
 
     e.g Bloomburrow = "blb"
     """
-    # 1. Check if the card data is already in the map
-    if card_dfmap[set_code]:
-        return card_dfmap[set_code]
-    
-
     set_name = set_code # If available, use the set name for pretty printing
     if set_code in SET_CODES:
         set_name = SET_CODES[set_code]
+    # 1. Check if the card data is already in the map
+    if set_code in card_dfmap:
+        print(f"Retrieved {set_name} data from memory.")
+        return card_dfmap[set_code]
 
     # 2. If not, check if the CSV file exists
-    file_path = "data/{set_code}/cards.csv"
+    file_path = f"data/{set_code}/cards.csv"
     if os.path.exists(file_path):
         print(f"Loading Scryfall data for {set_name} from existing file...")
         df = pd.read_csv(file_path)
@@ -60,7 +59,7 @@ def get_card_data(set_code: str) -> pd.DataFrame:
     return df
 
 # Not sure what I want  to do with this yet
-def clean_card_data(card_df: pd.DataFrame, output_file: str) -> None:
+def clean_card_data_(card_df: pd.DataFrame, output_file: str) -> None:
     """Cleans the card dataset by dropping unnecessary columns and saving the processed version."""
     core_card_data = ["name", "mana_cost", "cmc", "type_line", "oracle_text", "colors", "color_identity", "keywords", "rarity", "power", "toughness"]
     skeptical_keepers = ["reprint"]
