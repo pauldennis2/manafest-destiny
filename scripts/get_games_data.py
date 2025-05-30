@@ -56,3 +56,5 @@ def demo_column_efficiency():
 
     # Verify column type and memory usage
     print(df.info())
+
+

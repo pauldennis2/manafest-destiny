@@ -54,6 +54,7 @@ def get_card_data(set_code: str) -> pd.DataFrame:
 
     # Convert full dataset to DataFrame and save
     df = pd.DataFrame(all_data)
+    df.set_index("name", inplace=True)
     df.to_csv(file_path, index=False)
     card_dfmap[set_code] = df
     return df
