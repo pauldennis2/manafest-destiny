@@ -93,3 +93,72 @@ def analyze_first_full_draft(games_df):
     }
 
     return decklist_raw  # Now returning the decklist for further enrichment
+
+def enhanced_deck_analysis():
+    # Convert decklist dictionary to DataFrame
+    decklist_df = pd.DataFrame(decklist_raw.items(), columns=["name", "count"])
+
+    # Merge with Scryfall card data
+    decklist_enriched = decklist_df.merge(cards_df[["name", "cmc", "type_line"]], on="name", how="left")
+
+    # Compute basic deck stats
+    avg_mana_value = (decklist_enriched["cmc"] * decklist_enriched["count"]).sum() / decklist_enriched["count"].sum()
+    num_creatures = decklist_enriched[decklist_enriched["type_line"].str.contains("Creature", na=False)]["count"].sum()
+
+    # Display enriched decklist with stats
+    print(f"\n--- Enhanced Deck Analysis ---")
+    print(f"Average Mana Value: {avg_mana_value:.2f}")
+    print(f"Total Creatures: {num_creatures}")
+    print(decklist_enriched[["name", "count", "cmc", "type_line"]])
+
+# Step 4: Extract Card Types
+def get_card_types(card_df: pd.DataFrame) -> set:
+    """Finds all distinct card types in the dataset."""
+    return {type_line.split()[0] for type_line in card_df["type_line"]}
+
+# Step 5: Compute Deck Data
+def generate_deck_data(draft_df: pd.DataFrame, card_df: pd.DataFrame, output_file: str, max_decks: int = None) -> None:
+    """Aggregates deck performance data with an optional limit and saves it to a CSV file."""
+    card_types = get_card_types(card_df)
+    #deck_columns = ["deck_id", "wins", "losses", "avg_mana_curve", "bomb_density", "color_identity"] + [f"num_{ctype.lower()}" for ctype in card_types]
+    
+    # Draft id from that DF just becomes "deck_id" in the final
+    grouped = draft_df.groupby("draft_id")
+    deck_columns = [col for col in draft_df.columns if col.startswith("deck_")]
+    deck_df = pd.DataFrame(columns=deck_columns)
+
+    for i, (deck_id, group) in enumerate(grouped):
+        if max_decks and i >= max_decks:
+            break  # Stop early if max_decks is reached
+        
+        # Get list of card names from relevant columns
+        deck_list = [col.replace("deck_", "") for col in deck_columns if group[col].sum() > 0]
+
+        wins, losses = group["wins"].sum(), group["losses"].sum()
+
+        non_land_cards = [card for card in deck_list if "Land" not in card_df.loc[card, "type_line"]]
+        avg_mana_curve = sum(card_df.loc[card, "cmc"] for card in non_land_cards if card in card_df.index) / len(non_land_cards) if non_land_cards else 0
+        bomb_density = sum(1 for card in deck_list if card_df.loc[card, "rarity"] in ["rare", "mythic"]) / len(deck_list)
+        color_identity = list(set(color for card in deck_list for color in card_df.loc[card, "color_identity"]))
+        type_counts = {f"num_{ctype.lower()}": sum(1 for card in deck_list if ctype in card_df.loc[card, "type_line"]) for ctype in card_types}
+
+        deck_df.loc[len(deck_df)] = {**{"deck_id": deck_id, "wins": wins, "losses": losses, "avg_mana_curve": avg_mana_curve, "bomb_density": bomb_density, "color_identity": color_identity}, **type_counts}
+    deck_df.to_csv(output_file, index=False)
+    print(f"Deck DataFrame created: {deck_df.shape[0]} rows, {deck_df.shape[1]} columns (Processed up to {max_decks} decks)")
+
+def leopard():
+    csv_file = f"data/{set_code}/games.csv"
+    df = pd.read_csv(csv_file)
+
+    # Save as Parquet (PyArrow format)
+    parquet_file = "data/bloomburrow/games.parquet"
+    df.to_parquet(parquet_file, engine="pyarrow", compression="snappy")  # Snappy is fast & efficient
+
+    print(f"Converted {csv_file} to {parquet_file}.")
+
+    # Load the Parquet file we just created
+    parquet_filestr = "data/bloomburrow/games.parquet"
+
+    if "games_df" not in globals():
+        games_df = pd.read_parquet(parquet_filestr, engine="pyarrow")
+    cards_df = pd.read_csv("data/bloomburrow/cards.csv")

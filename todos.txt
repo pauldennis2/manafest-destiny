@@ -1,7 +1,7 @@
-Drop more columns from data set
+Drop more columns from data set (not priority)
 
-Parquet or feather as a more efficient format
-
-Integrate sparkfall/mtga card data
+Integrate new scripts/finish cleanup
 
 Idea of using draw rates as a deconfounding factor for luck - pipeline step
+
+Reclaim storage space - games.csv rezipped maybe?
