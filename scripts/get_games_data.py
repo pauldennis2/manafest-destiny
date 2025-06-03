@@ -17,7 +17,8 @@ def get_games_data(set_code: str):
 
     if os.path.exists(parquet_file):
         print(f"Loading game data for {set_code} from Parquet file...")
-        df = pd.read_parquet(parquet_file, engine="pyarrow")
+        #df = pd.read_parquet(parquet_file, engine="pyarrow")
+        df = pd.read_parquet(parquet_file, engine='fastparquet')
         games_dfmap[set_code] = df
         return df
 
