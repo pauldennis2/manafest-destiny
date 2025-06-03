@@ -27,6 +27,8 @@ def get_games_data(set_code: str):
         games_dfmap[set_code] = df
         return df
     
+    raise FileNotFoundError(f"No data found (CSV or parquet) for set: {set_code}")
+    
 def convert_to_parquet_(set_code: str):
     """Converts the games CSV file to Parquet format for efficient storage and retrieval."""
     csv_file = f"data/{set_code}/games.csv"

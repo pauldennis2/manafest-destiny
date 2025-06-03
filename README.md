@@ -87,3 +87,7 @@ For readers unfamiliar with Magic: The Gathering (MTG), this brief primer provid
 * **Mana:** The fundamental resource used to cast spells and activate abilities in MTG. Players typically generate mana using **Land** cards. Each card requires a specific amount of mana to be played. Converted Mana Cost (CMC) represents this numerically.
 
 For a deeper dive into MTG fundamentals, you can check out the official [Magic: The Gathering](https://magic.wizards.com/en/news/feature/level-one-full-course-2015-10-05) intro.
+
+# Business Problem Statement
+
+"Gathering Analytics, Inc has approached our firm for this project. They are seeking to break into the MTG online market by launching a website that will offer detailed guidance backed by data, as well as developing AI coaching services. They want to start with a model that can analyze the performance of draft decks. This analysis will inform recommendations for drafting strategies."
