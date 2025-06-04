@@ -9,3 +9,6 @@ Reclaim storage space - games.csv rezipped maybe?
 Clustering with k=10, does it detect the 10 tribal archetypes
 
 Download Duskmourn data and analyze (background task)
+
+Train individual models on areas like:
+    Predict win rate from mana curve
