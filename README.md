@@ -75,18 +75,7 @@ While our **Future Considerations** (e.g., Cross-Set Generalization) outline amb
 
 ---
 
-## MTG Primer for the Uninitiated
 
-For readers unfamiliar with Magic: The Gathering (MTG), this brief primer provides essential context to understand the project's data and objectives. We won't teach you how to play, but we'll cover the fundamental terms relevant to our analysis.
-
-* **Card:** The basic unit of MTG. Cards represent spells, creatures, or other game elements. Each card has a **mana cost** (how much mana is needed to play it), a **type** (e.g., Creature, Sorcery, Land), and a text box describing its abilities. Creatures also have **Power** (how much damage they deal) and **Toughness** (how much damage they can take).
-* **Deck:** The cards a player uses to play the game. The "decklist" is the primary input our model uses to predict performance.
-* **Set:** A distinct collection of around 150-200 unique cards released together. Sets often have their own themes and mechanics. When we refer to a "Bloomburrow draft," we mean a game played using only cards from the Bloomburrow set. Because each set has a unique card pool, models trained on one set generally can't predict performance in another.
-* **Limited Play** A popular MTG format where players don't bring their own pre-built decks.  Players build a 40-card deck from packs of random cards. This format emphasizes strategic card evaluation and on-the-fly deck construction. [**Draft**](https://magic.wizards.com/en/formats/booster-draft) is the format we are focused on. 
-
-* **Mana:** The fundamental resource used to cast spells and activate abilities in MTG. Players typically generate mana using **Land** cards. Each card requires a specific amount of mana to be played. Converted Mana Cost (CMC) represents this numerically.
-
-For a deeper dive into MTG fundamentals, you can check out the official [Magic: The Gathering](https://magic.wizards.com/en/news/feature/level-one-full-course-2015-10-05) intro.
 
 # Business Problem Statement
 

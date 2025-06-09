@@ -76,3 +76,6 @@ def clean_card_data_(card_df: pd.DataFrame, output_file: str) -> None:
     card_df.to_csv(output_file, index=False)
     print(f"Processed data: {card_df.shape[0]} rows, {card_df.shape[1]} columns")
     print(f"Cleaned file saved as {output_file}")
+
+blb_df = get_card_data("blb")
+print(blb_df.head(2))
