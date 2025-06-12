@@ -1,15 +1,6 @@
-Drop more columns from data set (not priority)
-
-Integrate new scripts/finish cleanup
-
-Idea of using draw rates as a deconfounding factor for luck - pipeline step
+Move to script model for helper functions
 
 Reclaim storage space - games.csv rezipped maybe?
-
-Clustering with k=10, does it detect the 10 tribal archetypes
-    Could build classification AND regression
+Clean up blb data
 
 Download Duskmourn data and analyze (background task)
-
-Train individual models on areas like:
-    Predict win rate from mana curve
