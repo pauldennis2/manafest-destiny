@@ -15,6 +15,12 @@ For readers unfamiliar with Magic: The Gathering (MTG), this brief primer provid
 
 For a deeper dive into MTG fundamentals, you can check out the official [Magic: The Gathering](https://magic.wizards.com/en/news/feature/level-one-full-course-2015-10-05) intro.
 
+## Important Jargon
+
+* **Bomb:** A really powerful card (almost always rare/mythic rare) that is a game-winning threat if left unanswered.
+* **Removal:** Spells that deal with your opponents' threats (destroying creatures or otherwise getting them out of play)
+* **Mana Curve:** It's important to have a mix of cheap and expensive cards in your deck. The ideal can shift a bit by format, but generally, you want a right-tailed "normal" distribution with the peak around 2-3 (lots of cheaper spells, and a few more expensive ones).
+
 ## Drafting Process and Strategies
 
 ### Process
