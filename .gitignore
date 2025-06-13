@@ -4,6 +4,7 @@ __pycache__/
 .vscode/
 .idea/
 *.log
+/nn_tuning/synergy_nn/
 
 # Environment and dependency files
 env/            # Virtual environment directory (avoid pushing dependencies)
