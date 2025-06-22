@@ -2,7 +2,7 @@
 
 ## Accomplishments
 
-Overall I'm quite satisfied with this project. I explored a variety of models. I feel that I had strong reasons to expect a neural network to be the optimal solution, but when a large number of model structures and different hyperparameters were producing results inferior to random forest and XGBoost I moved on appropriately. 
+Overall I'm quite satisfied with this project. I explored a variety of models. I feel that I had strong reasons to expect a neural network to be the optimal solution, but when a large number of model structures and different hyperparameters were producing results inferior to random forest and XGBoost I moved on. Even though it wasn't a part of the technical work, I enjoyed incorporating the logos/heraldry symbols I created with Copilot before the project formally started.
 
 ## Growth
 
@@ -16,7 +16,7 @@ If I had more time to continue working on this project, there are a few areas I 
 
 ### Automated LLM Analysis
 
-Integrating the generated statistics/analysis for each set with an LLM type tool to automate initial analysis and turn it into human readable advice.
+Integrating the generated statistics/analysis for each set with an LLM type tool to automate initial analysis and turn it into human readable advice. This would be interesting from a technical perspective but probably not the most useful.
 
 ### Further Exploration of Neural Net
 
