@@ -1,5 +1,7 @@
 # Manafest Destiny
 
+![project logo](images/logo2.png)
+
 Welcome to Manafest Destiny, a data science project to develop a regression model for analyzing Magic: The Gathering (MTG) draft decks. This file will serve as a directory to other areas.
 
 First, if you are not familiar with Magic, I highly recommend you read at least the first two sections of the [MTG Primer](mtg_primer.md). This should provide enough understanding to get the gist of the project.
